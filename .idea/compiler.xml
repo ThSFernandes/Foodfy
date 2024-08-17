@@ -9,10 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="discovery_server" />
         <module name="auth" />
-        <module name="Config_Server" />
+        <module name="config_server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Config_Server" target="17" />
       <module name="lib" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -20,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Config_Server" options="-parameters" />
       <module name="auth" options="-parameters" />
+      <module name="config_server" options="-parameters" />
       <module name="discovery_server" options="-parameters" />
     </option>
   </component>

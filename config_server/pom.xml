@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.restaurante.sistema</groupId>
-    <artifactId>Config_Server</artifactId>
+    <artifactId>config_server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Config_Server</name>
-    <description>Config_Server</description>
+    <name>config_Server</name>
+    <description>config_server</description>
     <url/>
     <licenses>
         <license/>
@@ -63,6 +63,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>config_server</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
