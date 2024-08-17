@@ -6,7 +6,7 @@ spring:
       uri: http://localhost:8283/config
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/public
+    url: jdbc:postgresql://localhost:5432/users-auth
     username: admin
     password: admin1234@
   flyway:
