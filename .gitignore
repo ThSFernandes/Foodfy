@@ -19,6 +19,7 @@ mvn/
 .project
 .classpath
 .settings/
+.factorypath
 bin/
 
 # Ignorar configurações específicas de NetBeans
