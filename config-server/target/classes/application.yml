@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: https://github.com/ThSFernandes/config-repo.git
+          search-paths: '{application}'
+          clone-on-start: true
+
+server:
+  port: 8283
+  servlet:
+    context-path: /config
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka/

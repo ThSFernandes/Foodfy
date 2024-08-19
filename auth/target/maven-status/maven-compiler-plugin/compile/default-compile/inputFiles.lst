@@ -1,0 +1,17 @@
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\product\ProductRequestDTO.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\infra\security\SecurityFilter.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\user\LoginResponseDTO.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\AuthApplication.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\product\Product.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\repositories\UserRepository.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\user\AuthenticationDTO.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\repositories\ProductRepository.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\controllers\AuthenticationController.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\services\AuthorizationService.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\controllers\ProductController.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\product\ProductResponseDTO.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\user\UserRole.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\infra\security\SecurityConfigurations.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\user\RegisterDTO.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\domain\user\User.java
+C:\Users\Luiz\eclipse-workspace\Foodfy\auth\src\main\java\com\example\auth\infra\security\TokenService.java

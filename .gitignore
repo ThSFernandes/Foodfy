@@ -1,0 +1,38 @@
+# Ignorar arquivos binários e de compilação
+*.class
+*.log
+*.war
+*.ear
+
+# Ignorar configurações específicas de IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Ignorar configurações específicas de Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# Ignorar configurações específicas de NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Ignorar arquivos gerados pelo sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de configuração do editor
+.vscode/
+*.code-workspace
+
+# Incluir arquivos de Docker e outros arquivos .yml
+!Dockerfile
+!docker-compose.yml
+!*.yml
