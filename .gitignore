@@ -7,6 +7,9 @@
 # Ignorar a pasta target
 target/
 
+#Ignorar arquivos temporários do maven:
+mvn/
+
 # Ignorar configurações específicas de IntelliJ IDEA
 .idea/
 *.iml
