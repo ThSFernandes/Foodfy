@@ -25,26 +25,26 @@ services:
       discovery-server:
         condition: service_healthy
 
-  # Serviço do Auth Server
-  # auth_server:
-  #   build:
-  #     context: ./auth
-  #   ports:
-  #     - "8081:8081"
-  #   container_name: auth_server
-  #   depends_on:
-  #     - config_server
-  #     - discovery_server
-  #     - db_auth
-  #   environment:
-  #     SPRING_DATASOURCE_URL: jdbc:postgresql://db_auth:5432/users-auth
-  #     SPRING_DATASOURCE_USERNAME: admin
-  #     SPRING_DATASOURCE_PASSWORD: admin1234@
+
+  auth-service:
+     build:
+       context: ./auth
+     ports:
+       - "8081:8081"
+     container_name: auth-service
+     depends_on:
+       - config-server
+       - discovery-server
+       - db-auth
+     environment:
+       SPRING_DATASOURCE_URL: jdbc:postgresql://db-auth:5432/users-auth
+       SPRING_DATASOURCE_USERNAME: admin
+       SPRING_DATASOURCE_PASSWORD: admin1234@
 
   # Banco de Dados PostgreSQL para Auth Server
-  db_auth:
+  db-auth:
     image: postgres
-    container_name: db_auth
+    container_name: db-auth
     restart: always
     shm_size: 128mb
     environment:
