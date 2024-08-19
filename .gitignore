@@ -4,6 +4,9 @@
 *.war
 *.ear
 
+# Ignorar a pasta target
+target/
+
 # Ignorar configurações específicas de IntelliJ IDEA
 .idea/
 *.iml
