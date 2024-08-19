@@ -51,8 +51,11 @@ services:
       POSTGRES_DB: users-auth
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin1234@
-    volumes:
-      - ./database:/docker-entrypoint-initdb.d
+
+
+
+#    volumes:
+#      - ./database:/docker-entrypoint-initdb.d
 
   # Banco de Dados PostgreSQL para Config Server (se necessário)
   # db_config:

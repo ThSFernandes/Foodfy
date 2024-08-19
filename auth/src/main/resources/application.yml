@@ -6,11 +6,15 @@ spring:
       uri: http://localhost:8283/config
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/users-auth
+    url: jdbc:postgresql://db-auth:5432/users-auth
     username: admin
     password: admin1234@
   flyway:
     baseline-on-migrate: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 api:
   security:
