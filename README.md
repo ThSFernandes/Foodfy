@@ -47,5 +47,6 @@ cd restaurant-system
 
 # Construir e iniciar os containers
 docker-compose up --build
-
-
+```
+<h2 id="Diagrama de Estados">🛠&nbsp; Tecnologias</h2>
+![image](https://github.com/user-attachments/assets/0ff7e85b-65f2-469d-9af1-cc4d780a314f)
