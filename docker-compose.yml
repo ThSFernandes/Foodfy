@@ -9,7 +9,6 @@ services:
     container_name: discovery-server
     healthcheck:
       test: ["CMD", "curl", "--silent", "--fail", "http://localhost:8761/"]
-#Prestar atenção em qual valor ideal para tentativas
       interval: 10s
       retries: 6
       start_period: 30s
@@ -25,7 +24,6 @@ services:
       discovery-server:
         condition: service_healthy
 
-
   auth-service:
      build:
        context: ./auth
@@ -36,12 +34,13 @@ services:
        - config-server
        - discovery-server
        - db-auth
-#     environment:
-#       SPRING_DATASOURCE_URL: jdbc:postgresql://db-auth:5432/users-auth
-#       SPRING_DATASOURCE_USERNAME: admin
-#       SPRING_DATASOURCE_PASSWORD: admin1234@
+     healthcheck:
+       test: ["CMD", "curl", "--silent", "--fail", "http://config-server:8283/config/auth/default"]
+       interval: 30s
+       retries: 5
+       start_period: 60s
+       timeout: 10s
 
-  # Banco de Dados PostgreSQL para Auth Server
   db-auth:
     image: postgres
     container_name: db-auth
@@ -51,10 +50,7 @@ services:
       POSTGRES_DB: users-auth
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin1234@
-#    volumes:
-#      - ./database:/docker-entrypoint-initdb.d
 
-  # Adminer para administração do banco de dados
   adminer:
     image: adminer
     container_name: adminer
