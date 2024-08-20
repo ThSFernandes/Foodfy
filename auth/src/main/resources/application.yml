@@ -1,16 +1,9 @@
-# application.yml
 server:
   port: 8081
 
 spring:
   main:
     lazy-initialization: true
-  application:
-    name: auth-service
-  cloud:
-    config:
-      uri: http://config-server:8283
-      fail-fast: true
   datasource:
     url: ${db-url}
     username: ${db-username}
@@ -19,15 +12,11 @@ spring:
     hibernate:
       ddl-auto: ${hibernate-ddl-auto}
     show-sql: ${jpa-show-sql}
-  flyway:
-    baseline-on-migrate: ${db-baseline-on-migrate}
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url:
-      defaultZone: http://discovery-server:8761/eureka/
 
 api:
   security:
