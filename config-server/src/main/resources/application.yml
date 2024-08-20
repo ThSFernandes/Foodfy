@@ -6,7 +6,7 @@ spring:
       server:
         git:
           uri: https://github.com/ThSFernandes/config-repo.git
-          search-paths: '{application}'
+          search-paths: ''
           clone-on-start: true
 
 server:

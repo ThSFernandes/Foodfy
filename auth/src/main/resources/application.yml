@@ -6,7 +6,8 @@ spring:
     name: auth-service
   cloud:
     config:
-      uri: http://localhost:8283/config
+      uri: http://config-server:8283/config
+      fail-fast: true
 
 eureka:
   client:

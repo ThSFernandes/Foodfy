@@ -36,10 +36,10 @@ services:
 #       - config-server
 #       - discovery-server
 #       - db-auth
-#     environment:
-#       SPRING_DATASOURCE_URL: jdbc:postgresql://db-auth:5432/users-auth
-#       SPRING_DATASOURCE_USERNAME: admin
-#       SPRING_DATASOURCE_PASSWORD: admin1234@
+##     environment:
+##       SPRING_DATASOURCE_URL: jdbc:postgresql://db-auth:5432/users-auth
+##       SPRING_DATASOURCE_USERNAME: admin
+##       SPRING_DATASOURCE_PASSWORD: admin1234@
 
   # Banco de Dados PostgreSQL para Auth Server
   db-auth:
