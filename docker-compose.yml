@@ -26,20 +26,20 @@ services:
         condition: service_healthy
 
 
-#  auth-service:
-#     build:
-#       context: ./auth
-#     ports:
-#       - "8081:8081"
-#     container_name: auth-service
-#     depends_on:
-#       - config-server
-#       - discovery-server
-#       - db-auth
-##     environment:
-##       SPRING_DATASOURCE_URL: jdbc:postgresql://db-auth:5432/users-auth
-##       SPRING_DATASOURCE_USERNAME: admin
-##       SPRING_DATASOURCE_PASSWORD: admin1234@
+  auth-service:
+     build:
+       context: ./auth
+     ports:
+       - "8081:8081"
+     container_name: auth-service
+     depends_on:
+       - config-server
+       - discovery-server
+       - db-auth
+#     environment:
+#       SPRING_DATASOURCE_URL: jdbc:postgresql://db-auth:5432/users-auth
+#       SPRING_DATASOURCE_USERNAME: admin
+#       SPRING_DATASOURCE_PASSWORD: admin1234@
 
   # Banco de Dados PostgreSQL para Auth Server
   db-auth:
@@ -51,23 +51,8 @@ services:
       POSTGRES_DB: users-auth
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin1234@
-
-
-
 #    volumes:
 #      - ./database:/docker-entrypoint-initdb.d
-
-  # Banco de Dados PostgreSQL para Config Server (se necessário)
-  # db_config:
-  #   image: postgres
-  #   container_name: db_config
-  #   restart: always
-  #   environment:
-  #     POSTGRES_DB: config-db
-  #     POSTGRES_USER: admin
-  #     POSTGRES_PASSWORD: admin1234@
-  #   volumes:
-  #     - db_config_data:/var/lib/postgresql/data
 
   # Adminer para administração do banco de dados
   adminer:
