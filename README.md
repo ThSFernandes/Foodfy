@@ -12,8 +12,7 @@
 <p>Este projeto foi desenvolvido usando a seguinte tecnologia:</p>
 
 ---
-<img align="center" height="45" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" />
-<img align="center" height="45" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" />
+<img align="center" height="45" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" /><img align="center" height="45" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" />
 <img align="center" height="45" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" />
 <img align="center" height="45" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" />
 <img align="center" height="45" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" />
@@ -56,3 +55,11 @@ docker-compose up --build
 <h2 id="Diagrama de Estados">🛠&nbsp; Diagrama de Estados</h2>
 <img src="https://github.com/user-attachments/assets/0ff7e85b-65f2-469d-9af1-cc4d780a314f" alt="Diagrama de Estados part 1" style="display: block; margin: 0 auto; width: 80%;"/>
 <img src="https://github.com/user-attachments/assets/5995ffa4-e873-4356-a2a4-39fd084aa95e" alt="Diagrama de Estados part 2" style="display: block; margin: 0 auto; width: 80%;"/>
+
+<h2 id="Diagrama de Estados">🛠&nbsp; Diagrama de Sequência para o Processo de Pedidos</h2>
+<img src="https://github.com/user-attachments/assets/43267c9b-cead-4817-addb-964569f8fc0b" alt="Diagrama de Estados part 2" style="display: block; margin: 0 auto; width: 80%;"/>
+
+<h2 id="Diagrama de Estados">🛠&nbsp; Diagrama de Sequência para o Processo de Pedidos</h2>
+<img src="https://github.com/user-attachments/assets/bf53b4af-9024-4e31-9487-f34aefa463f5" alt="Diagrama de Estados part 2" style="display: block; margin: 0 auto; width: 80%;"/>
+
+
