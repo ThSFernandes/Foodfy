@@ -14,6 +14,12 @@ spring:
         multiplier: 1.1  # Multiplicador para aumentar o intervalo entre as tentativas
         max-interval: 8000  # Intervalo máximo entre as tentativas (em milissegundos)
 
+logging:
+  level:
+    org.springframework.cloud.config.server: DEBUG
+    org.springframework.cloud.config.client: DEBUG
+    org.springframework.boot.actuate.health: DEBUG
+
 server:
   port: 8283
   servlet:

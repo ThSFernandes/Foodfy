@@ -1,5 +1,6 @@
 version: '3.9'
 
+
 services:
   discovery-server:
     build:
@@ -23,23 +24,26 @@ services:
     depends_on:
       discovery-server:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8283/config/actuator/health"]
+      interval: 30s
+      retries: 5
+      start_period: 60s
+      timeout: 10s
 
   auth-service:
-     build:
-       context: ./auth
-     ports:
-       - "8081:8081"
-     container_name: auth-service
-     depends_on:
-       - config-server
-       - discovery-server
-       - db-auth
-     healthcheck:
-       test: ["CMD", "curl", "--silent", "--fail", "http://config-server:8283/config/auth/default"]
-       interval: 30s
-       retries: 5
-       start_period: 60s
-       timeout: 10s
+    build:
+      context: ./auth
+    ports:
+      - "8081:8081"
+    container_name: auth-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery-server:
+        condition: service_healthy
+      db-auth:
+        condition: service_healthy
 
   db-auth:
     image: postgres
@@ -50,6 +54,12 @@ services:
       POSTGRES_DB: users-auth
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin1234@
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d users-auth"]
+      interval: 20s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
   adminer:
     image: adminer
