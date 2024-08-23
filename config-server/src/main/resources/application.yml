@@ -6,13 +6,8 @@ spring:
       server:
         git:
           uri: https://github.com/ThSFernandes/config-repo.git
-          search-paths: ''
           clone-on-start: true
-      retry:
-        max-attempts: 6  # Número máximo de tentativas antes de desistir
-        initial-interval: 1200  # Intervalo inicial entre as tentativas (em milissegundos)
-        multiplier: 1.1  # Multiplicador para aumentar o intervalo entre as tentativas
-        max-interval: 8000  # Intervalo máximo entre as tentativas (em milissegundos)
+        fail-fast: true
 
 logging:
   level:
