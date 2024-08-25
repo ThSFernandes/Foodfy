@@ -15,6 +15,9 @@ RUN mvn clean package -DskipTests
 # Etapa 2: Criar a imagem final
 FROM openjdk:17-jdk-slim
 
+# Atualizar o apt-get e instalar curl
+RUN apt-get update && apt-get install -y curl
+
 # Diretório onde o JAR será copiado
 WORKDIR /app
 

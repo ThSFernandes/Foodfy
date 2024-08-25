@@ -2,10 +2,10 @@ server:
   port: 8081
 
 spring:
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-  main:
-    lazy-initialization: true
+  application:
+    name: auth-service
+  config:
+    import: configserver:http://config-server:8283/config?fail-fast=true&max-attempts=10&max-interval=1500&multiplier=1.2&initial-interval=1100
   datasource:
     url: ${db-url}
     username: ${db-username}
@@ -17,6 +17,8 @@ spring:
 
 eureka:
   client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
 
@@ -24,3 +26,16 @@ api:
   security:
     token:
       secret: ${JWT_SECRET:my-secret-key}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,configprops
+  endpoint:
+    env:
+      enabled: true
+      show-values: ALWAYS
+      keys-to-sanitize: 
+    configprops:
+      show-values: ALWAYS
