@@ -28,45 +28,45 @@ services:
       start_period: 30s
       timeout: 10s
 
-#  auth-service:
-#    build:
-#      context: ./auth
-#    ports:
-#      - "8081:8081"
-#    container_name: auth-service
-#    depends_on:
-#      config-server:
-#        condition: service_healthy
-#      discovery-server:
-#        condition: service_healthy
-#      db-auth:
-#        condition: service_healthy
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
-#      interval: 30s
-#      retries: 5
-#      start_period: 30s
-#      timeout: 10s
+  auth-service:
+    build:
+      context: ./auth
+    ports:
+      - "8081:8081"
+    container_name: auth-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery-server:
+        condition: service_healthy
+      db-auth:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
-#  stock-service:
-#    build:
-#      context: ./stock
-#    ports:
-#      - "8290:8290"
-#    container_name: stock-service
-#    depends_on:
-#      config-server:
-#        condition: service_healthy
-#      discovery-server:
-#        condition: service_healthy
-#      db-stock:
-#        condition: service_healthy
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:8290/actuator/health"]
-#      interval: 30s
-#      retries: 5
-#      start_period: 30s
-#      timeout: 10s
+  stock-service:
+    build:
+      context: ./stock
+    ports:
+      - "8290:8290"
+    container_name: stock-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery-server:
+        condition: service_healthy
+      db-stock:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8290/actuator/health"]
+      interval: 30s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
   menu-service:
     build:
@@ -108,41 +108,41 @@ services:
       start_period: 30s
       timeout: 10s
 
-#  db-auth:
-#    image: postgres
-#    container_name: db-auth
-#    restart: always
-#    shm_size: 128mb
-#    environment:
-#      POSTGRES_DB: users-auth
-#      POSTGRES_USER: admin
-#      POSTGRES_PASSWORD: admin1234@
-#    healthcheck:
-#      test: ["CMD-SHELL", "pg_isready -U admin -d users-auth"]
-#      interval: 10s
-#      retries: 3
-#      start_period: 20s
-#      timeout: 10s
-#    volumes:
-#      - db_auth_data:/var/lib/postgresql/data
+  db-auth:
+    image: postgres
+    container_name: db-auth
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: users-auth
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin1234@
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d users-auth"]
+      interval: 10s
+      retries: 3
+      start_period: 20s
+      timeout: 10s
+    volumes:
+      - db_auth_data:/var/lib/postgresql/data
 
-#  db-stock:
-#    image: postgres
-#    container_name: db-stock
-#    restart: always
-#    shm_size: 128mb
-#    environment:
-#      POSTGRES_DB: stock-database
-#      POSTGRES_USER: admin
-#      POSTGRES_PASSWORD: admin1234@
-#    healthcheck:
-#      test: ["CMD-SHELL", "pg_isready -U admin -d stock-database"]
-#      interval: 10s
-#      retries: 3
-#      start_period: 20s
-#      timeout: 10s
-#    volumes:
-#      - db_stock_data:/var/lib/postgresql/data
+  db-stock:
+    image: postgres
+    container_name: db-stock
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: stock-database
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin1234@
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d stock-database"]
+      interval: 10s
+      retries: 3
+      start_period: 20s
+      timeout: 10s
+    volumes:
+      - db_stock_data:/var/lib/postgresql/data
 
   db-menu:
     image: postgres
@@ -187,7 +187,7 @@ services:
       - "3080:8080"
 
 volumes:
-#  db_auth_data:
-#  db_stock_data:
+  db_auth_data:
+  db_stock_data:
   db_menu_data:
   db_order_data:

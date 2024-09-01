@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.foodfy</groupId>
+	<artifactId>foodfy-project</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Foodfy</name>
+
+	<modules>
+		<module>foodfy-gui</module>
+		<module>discovery-server</module>
+		<module>config-server</module>
+		<module>auth</module>
+		<module>stock</module>
+		<module>menu-service</module>
+		<module>order</module>
+	</modules>
+
+</project>

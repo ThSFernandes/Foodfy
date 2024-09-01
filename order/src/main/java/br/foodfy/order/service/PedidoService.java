@@ -17,11 +17,12 @@ import java.util.stream.Collectors;
 @Service
 public class PedidoService {
 
-    @Autowired
+	@Autowired
     private PedidoRepository pedidoRepository;
-
-    @Autowired
-    private RestTemplate restTemplate;
+    
+    public PedidoService() {
+    	
+    }
 
     public Pedido criarPedido(Pedido pedido) {
         // Validar pedido
@@ -55,6 +56,7 @@ public class PedidoService {
     private void validarPedido(Pedido pedido) {
         // Obter o menu específico para o pedido
         String urlMenu = "http://menu-service/api/menus/" + pedido.getId();
+        RestTemplate restTemplate = new RestTemplate();
         MenuResponse menuResponse = restTemplate.getForObject(urlMenu, MenuResponse.class);
 
         if (menuResponse == null) {
