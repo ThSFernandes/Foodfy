@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+@SuppressWarnings("serial")
 @Table(name = "users")
 @Entity(name = "users")
 @Getter
