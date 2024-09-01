@@ -1,6 +1,5 @@
 version: '3.9'
 
-
 services:
   discovery-server:
     build:
@@ -45,6 +44,20 @@ services:
       db-auth:
         condition: service_healthy
 
+  stock-service:
+    build:
+      context: ./stock
+    ports:
+      - "8290:8290"
+    container_name: stock-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery-server:
+        condition: service_healthy
+      db-stock:
+        condition: service_healthy
+
   db-auth:
     image: postgres
     container_name: db-auth
@@ -60,6 +73,26 @@ services:
       retries: 5
       start_period: 30s
       timeout: 10s
+    volumes:
+      - db_auth_data:/var/lib/postgresql/data
+
+  db-stock:
+    image: postgres
+    container_name: db-stock
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: stock-database
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin1234@
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d stock-database"]
+      interval: 20s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    volumes:
+      - db_stock_data:/var/lib/postgresql/data
 
   adminer:
     image: adminer
@@ -69,4 +102,4 @@ services:
 
 volumes:
   db_auth_data:
-  db_config_data:
+  db_stock_data:
