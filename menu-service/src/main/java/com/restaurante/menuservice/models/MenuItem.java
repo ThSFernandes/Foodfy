@@ -1,5 +1,6 @@
 package com.restaurante.menuservice.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,12 +8,16 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+    private double price;
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
+    @JsonBackReference
     private Menu menu;
 
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -27,6 +32,14 @@ public class MenuItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public Menu getMenu() {

@@ -26,8 +26,12 @@ public class PedidoController {
     @GetMapping("/{id}")
     public ResponseEntity<Pedido> buscarPedido(@PathVariable Long id) {
         Pedido pedido = pedidoService.buscarPedido(id);
+        if (pedido == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(pedido);
     }
+
 
     @GetMapping
     public ResponseEntity<List<Pedido>> listarPedidos() {

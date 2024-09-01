@@ -36,8 +36,13 @@ public class PedidoService {
     }
 
     public Pedido buscarPedido(Long id) {
-        return pedidoRepository.findById(id).orElse(null);
+        Pedido pedido = pedidoRepository.findById(id).orElse(null);
+        if (pedido == null) {
+            System.out.println("Pedido com ID " + id + " não encontrado.");
+        }
+        return pedido;
     }
+
 
     public List<Pedido> listarPedidos() {
         return pedidoRepository.findAll();
