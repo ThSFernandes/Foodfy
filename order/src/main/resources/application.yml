@@ -1,0 +1,34 @@
+server:
+  port: 8292
+
+spring:
+  application:
+    name: order-service
+  config:
+    import: configserver:http://config-server:8283/config?fail-fast=true&max-attempts=10&max-interval=1500&multiplier=1.2&initial-interval=1100
+  datasource:
+    url: ${db-url}
+    username: ${db-username}
+    password: ${db-password}
+  jpa:
+    hibernate:
+      ddl-auto: ${hibernate-ddl-auto}
+    show-sql: ${jpa-show-sql}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    env:
+      enabled: true
+      show-values: ALWAYS
+    configprops:
+      show-values: ALWAYS
