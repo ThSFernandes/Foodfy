@@ -1,14 +1,31 @@
-# Use a imagem base do OpenJDK
-FROM openjdk:17-jdk-slim
-
-# Adicione o JAR da sua aplicação ao contêiner
-COPY target/menu-service.jar /app/menu-service.jar
-
-# Defina o diretório de trabalho
+# Etapa 1: Construir o projeto
+FROM maven:3.8.3-openjdk-17 AS build
 WORKDIR /app
 
-# Exponha a porta em que a aplicação vai rodar
+# Copia o arquivo pom.xml e baixa as dependências do Maven
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copia todo o código-fonte do projeto
+COPY src ./src
+
+# Compila o projeto e gera o JAR
+RUN mvn clean package -DskipTests
+
+# Etapa 2: Criar a imagem final
+FROM openjdk:17-jdk-slim
+
+# Atualizar o apt-get e instalar curl
+RUN apt-get update && apt-get install -y curl
+
+# Diretório onde o JAR será copiado
+WORKDIR /app
+
+# Copia o JAR gerado na etapa de build
+COPY --from=build /app/target/menu-service-0.0.1-SNAPSHOT.jar /app/menu-service.jar
+
+# Define a porta que o container vai expor
 EXPOSE 8484
 
-# Comando para executar a aplicação
-ENTRYPOINT ["java", "-jar", "menu-service.jar"]
+# Comando para iniciar o Spring Boot
+ENTRYPOINT ["java", "-jar", "/app/menu-service.jar"]

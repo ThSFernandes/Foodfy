@@ -1,12 +1,34 @@
+server:
+  port: 8290
+
 spring:
+  application:
+    name: menu-service
+  config:
+    import: configserver:http://config-server:8283/config?fail-fast=true&max-attempts=10&max-interval=1500&multiplier=1.2&initial-interval=1100
   datasource:
-    url: jdbc:postgresql://postgres:5432/menu
-    username: thiago
-    password: thg1234
+    url: ${db-url}
+    username: ${db-username}
+    password: ${db-password}
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+      ddl-auto: ${hibernate-ddl-auto}
+    show-sql: ${jpa-show-sql}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    env:
+      enabled: true
+      show-values: ALWAYS
+    configprops:
+      show-values: ALWAYS
