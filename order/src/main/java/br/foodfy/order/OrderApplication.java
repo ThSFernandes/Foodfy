@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "br.foodfy.order.repositories")
-@EntityScan(basePackages = "br.foodfy.order.domain")
+@EnableJpaRepositories(basePackages = "br.foodfy.order.repository")
+@EntityScan(basePackages = "br.foodfy.order.model")
 public class OrderApplication {
 
 	public static void main(String[] args) {
