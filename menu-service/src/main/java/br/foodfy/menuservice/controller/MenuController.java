@@ -29,9 +29,21 @@ public class MenuController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Menu> getMenu(@PathVariable Long id) {
+    public ResponseEntity<Menu> getMenuById(@PathVariable Long id) {
         try {
             Menu menu = menuService.getMenu(id);
+            return ResponseEntity.ok(menu);
+        } catch (NoSuchElementException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Menu> getMenuByName(@PathVariable String name) {
+        try {
+            Menu menu = menuService.getMenu(name);
             return ResponseEntity.ok(menu);
         } catch (NoSuchElementException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -52,7 +64,7 @@ public class MenuController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Menu> updateMenu(@PathVariable Long id, @RequestBody Menu menu) {
+    public ResponseEntity<Menu> updateMenuById(@PathVariable Long id, @RequestBody Menu menu) {
         try {
             Menu updatedMenu = menuService.updateMenu(id, menu);
             return ResponseEntity.ok(updatedMenu);
@@ -63,10 +75,34 @@ public class MenuController {
         }
     }
 
+    @PutMapping("/name/{name}")
+    public ResponseEntity<Menu> updateMenuByName(@PathVariable String name, @RequestBody Menu menu) {
+        try {
+            Menu updatedMenu = menuService.updateMenu(name, menu);
+            return ResponseEntity.ok(updatedMenu);
+        } catch (NoSuchElementException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMenu(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteMenuById(@PathVariable Long id) {
         try {
             menuService.deleteMenu(id);
+            return ResponseEntity.noContent().build();
+        } catch (NoSuchElementException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @DeleteMapping("/name/{name}")
+    public ResponseEntity<Void> deleteMenuByName(@PathVariable String name) {
+        try {
+            menuService.deleteMenu(name);
             return ResponseEntity.noContent().build();
         } catch (NoSuchElementException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

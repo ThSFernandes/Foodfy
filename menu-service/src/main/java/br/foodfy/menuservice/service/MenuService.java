@@ -46,12 +46,21 @@ public class MenuService {
                 .orElseThrow(() -> new NoSuchElementException("Menu not found with id: " + id));
     }
 
+    // Sobrecarga: Método para obter um menu pelo nome
+    public Menu getMenu(String name) throws NoSuchElementException, IllegalArgumentException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid menu name provided.");
+        }
+        return menuRepository.findByName(name)
+                .orElseThrow(() -> new NoSuchElementException("Menu not found with name: " + name));
+    }
+
     // Método para obter todos os menus
     public List<Menu> getAllMenus() {
         return menuRepository.findAll();
     }
 
-    // Método para atualizar um menu existente
+    // Método para atualizar um menu existente pelo ID
     public Menu updateMenu(Long id, Menu menuDetails) throws NoSuchElementException, IllegalArgumentException {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid menu ID provided.");
@@ -79,6 +88,34 @@ public class MenuService {
         return menuRepository.save(menu);
     }
 
+    // Sobrecarga: Método para atualizar um menu existente pelo nome
+    public Menu updateMenu(String name, Menu menuDetails) throws NoSuchElementException, IllegalArgumentException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid menu name provided.");
+        }
+        if (menuDetails == null || menuDetails.getName() == null) {
+            throw new IllegalArgumentException("Invalid menu details provided.");
+        }
+
+        Menu menu = menuRepository.findByName(name)
+                .orElseThrow(() -> new NoSuchElementException("Menu not found with name: " + name));
+
+        // Atualizar o nome do menu
+        menu.setName(menuDetails.getName());
+
+        // Atualizar os itens do menu
+        if (menuDetails.getItems() != null) {
+            for (MenuItem item : menuDetails.getItems()) {
+                if (item != null) {
+                    item.setMenu(menu); // Associar o item ao menu
+                }
+            }
+            menu.setItems(menuDetails.getItems());
+        }
+
+        return menuRepository.save(menu);
+    }
+
     // Método para deletar um menu pelo ID
     public void deleteMenu(Long id) throws NoSuchElementException, IllegalArgumentException {
         if (id == null || id <= 0) {
@@ -86,6 +123,16 @@ public class MenuService {
         }
         Menu menu = menuRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Menu not found with id: " + id));
+        menuRepository.delete(menu);
+    }
+
+    // Sobrecarga: Método para deletar um menu pelo nome
+    public void deleteMenu(String name) throws NoSuchElementException, IllegalArgumentException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid menu name provided.");
+        }
+        Menu menu = menuRepository.findByName(name)
+                .orElseThrow(() -> new NoSuchElementException("Menu not found with name: " + name));
         menuRepository.delete(menu);
     }
 }
