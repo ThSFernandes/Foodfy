@@ -25,7 +25,7 @@ WORKDIR /app
 COPY --from=build /app/target/auth-0.0.1-SNAPSHOT.jar /app/auth.jar
 
 # Define a porta que o container vai expor
-EXPOSE 8288
+EXPOSE 8081
 
 # Comando para iniciar o Spring Boot
 ENTRYPOINT ["java", "-jar", "/app/auth.jar"]

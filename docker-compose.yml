@@ -73,8 +73,6 @@ services:
       timeout: 10s
     volumes:
       - db_auth_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 
   db-stock:
     image: postgres
@@ -93,8 +91,6 @@ services:
       timeout: 10s
     volumes:
       - db_stock_data:/var/lib/postgresql/data
-    ports:
-      - "5433:5432"
 
   adminer:
     image: adminer

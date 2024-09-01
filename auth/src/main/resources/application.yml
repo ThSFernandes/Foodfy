@@ -36,6 +36,5 @@ management:
     env:
       enabled: true
       show-values: ALWAYS
-      keys-to-sanitize: 
     configprops:
       show-values: ALWAYS
