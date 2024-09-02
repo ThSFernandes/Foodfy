@@ -15,7 +15,10 @@ public class MenuItem {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "menu_id", nullable = false)
+    @JoinColumns({
+        @JoinColumn(name = "menu_id", referencedColumnName = "id"),
+        @JoinColumn(name = "menu_name", referencedColumnName = "name")
+    })
     @JsonBackReference
     private Menu menu;
 }
