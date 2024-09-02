@@ -45,6 +45,20 @@ public class MenuService {
         return menuRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Menu not found with id: " + id));
     }
+    
+    public MenuItem validateMenuItem(Long menuId, Long itemId) throws NoSuchElementException, IllegalArgumentException {
+        if (menuId == null || menuId <= 0 || itemId == null || itemId <= 0) {
+            throw new IllegalArgumentException("Invalid menu ID or item ID provided.");
+        }
+
+        Menu menu = menuRepository.findById(menuId)
+                .orElseThrow(() -> new NoSuchElementException("Menu not found with id: " + menuId));
+
+        return menu.getItems().stream()
+                .filter(item -> item.getId().equals(itemId))
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("Item not found with id: " + itemId + " in menu: " + menuId));
+    }
 
     // Sobrecarga: Método para obter um menu pelo nome
     public Menu getMenu(String name) throws NoSuchElementException, IllegalArgumentException {
